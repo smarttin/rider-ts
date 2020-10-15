@@ -48,6 +48,9 @@ class User extends BaseEntity {
   @Column({type: 'boolean', default: false})
   verifiedPhoneNumber: boolean;
 
+  @Column({type: 'text', nullable: true})
+  fbId: string;
+  
   @Column({type: 'text'})
   profilePhoto: string;
 
