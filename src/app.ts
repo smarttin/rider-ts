@@ -3,21 +3,42 @@ import {GraphQLServer} from 'graphql-yoga';
 import helmet from 'helmet';
 import logger from 'morgan';
 import schema from './schema';
+import decodeJwt from './util/decodeJwt';
 
 class App {
   public app: GraphQLServer;
   constructor() {
     this.app = new GraphQLServer({
-      schema
+      schema,
+      context: req => {
+        return {
+          req: req.request
+        }
+      }
     });
     this.middlewares();
   }
   private middlewares = (): void => {
-    this.app.express.use(helmet({
-      contentSecurityPolicy: false,
-    }));
+    this.app.express.use(
+      helmet({
+        contentSecurityPolicy: false,
+      }),
+    );
     this.app.express.use(logger('dev'));
     this.app.express.use(cors());
+    this.app.express.use(this.jwt);
+  };
+  private jwt = async (req, res, next): Promise<void> => {
+    const token = req.get('X-JWT');
+    if (token) {
+      const user = await decodeJwt(token);
+      if (user) {
+        req.user = user;
+      } else {
+        req.user = undefined;
+      }
+    }
+    next();
   };
 }
 
