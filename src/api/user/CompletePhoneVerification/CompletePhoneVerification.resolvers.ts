@@ -5,6 +5,7 @@ import {
 import {Resolvers} from 'src/types/resolvers';
 import User from '../../../entities/User';
 import Verification from '../../../entities/Verification';
+import createJwt from '../../../util/createJwt';
 
 const resolvers: Resolvers = {
   Mutation: {
@@ -41,11 +42,11 @@ const resolvers: Resolvers = {
         if (user) {
           user.verifiedPhoneNumber = true;
           user.save();
-          // const token = createJWT(user.id);
+          const token = createJwt(user.id);
           return {
             ok: true,
             error: null,
-            token: 'comming soon',
+            token,
           };
         } else {
           return {
