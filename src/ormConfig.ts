@@ -4,7 +4,7 @@ const connectionOptions: ConnectionOptions = {
   type: 'postgres',
   database: 'riderdb',
   synchronize: true,
-  logging: true,
+  // logging: true,
   entities: ['entities/**/*.*'],
   host: process.env.DB_ENDPOINT,
   port: 5432,
