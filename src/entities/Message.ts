@@ -27,11 +27,9 @@ class Message extends BaseEntity {
   @ManyToOne(type => User, user => user.messages)
   user: User;
 
-  @CreateDateColumn({type: 'timestamp'})
-  createdAt: Date;
+  @CreateDateColumn() createdAt: string;
 
-  @UpdateDateColumn({type: 'timestamp'})
-  updatedAt: Date;
+  @UpdateDateColumn() updatedAt: string;
 }
 
 export default Message;

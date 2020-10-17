@@ -71,11 +71,9 @@ class Ride extends BaseEntity {
   @JoinColumn()
   chat: Chat;
 
-  @CreateDateColumn({type: 'timestamp'})
-  createdAt: Date;
+  @CreateDateColumn() createdAt: string;
 
-  @UpdateDateColumn({type: 'timestamp'})
-  updatedAt: Date;
+  @UpdateDateColumn() updatedAt: string;
 }
 
 export default Ride;

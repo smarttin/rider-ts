@@ -94,11 +94,9 @@ class User extends BaseEntity {
     return `${this.firstName} ${this.lastName}`;
   }
 
-  @CreateDateColumn({type: 'timestamp'})
-  createdAt: Date;
+  @CreateDateColumn() createdAt: string;
 
-  @UpdateDateColumn({type: 'timestamp'})
-  updatedAt: Date;
+  @UpdateDateColumn() updatedAt: string;
 
   public comparePassword(password: string): Promise<boolean> {
     return bcrypt.compare(password, this.password);

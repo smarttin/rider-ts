@@ -29,13 +29,14 @@ class Place extends BaseEntity {
   @Column({type: 'boolean', default: false})
   isFav: boolean;
 
+  @Column({ nullable: true })
+  userId: number;
+
   @ManyToOne(type => User, user => user.places)
   user: User;
 
-  @CreateDateColumn({type: 'timestamp'})
-  createdAt: Date;
+  @CreateDateColumn() createdAt: string;
 
-  @UpdateDateColumn({type: 'timestamp'})
-  updatedAt: Date;
+  @UpdateDateColumn() updatedAt: string;
 }
 export default Place;

@@ -39,11 +39,9 @@ class Chat extends BaseEntity {
   @ManyToOne(type => User, user => user.chatsAsDriver)
   driver: User;
 
-  @CreateDateColumn({type: 'timestamp'})
-  createdAt: Date;
+  @CreateDateColumn() createdAt: string;
 
-  @UpdateDateColumn({type: 'timestamp'})
-  updatedAt: Date;
+  @UpdateDateColumn() updatedAt: string;
 }
 
 export default Chat;

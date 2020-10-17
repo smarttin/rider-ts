@@ -28,11 +28,9 @@ class Verification extends BaseEntity {
   @Column({type: 'boolean', default: false})
   verified: boolean;
 
-  @CreateDateColumn({type: 'timestamp'})
-  createdAt: Date;
+  @CreateDateColumn() createdAt: string;
 
-  @UpdateDateColumn({type: 'timestamp'})
-  updatedAt: Date;
+  @UpdateDateColumn() updatedAt: string;
 
   @BeforeInsert()
   createKey(): void {
