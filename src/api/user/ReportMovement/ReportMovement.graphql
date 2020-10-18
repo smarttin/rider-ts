@@ -4,5 +4,5 @@ type ReportMovementResponse {
 }
 
 type Mutation {
-  ReportMovement(orientation: Float, lastLat: Float, lastLng: Float): ReportMovementResponse!
+  ReportMovement(lastOrientation: Float, lastLat: Float, lastLng: Float): ReportMovementResponse!
 }
