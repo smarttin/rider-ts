@@ -15,7 +15,7 @@ const resolvers: Resolvers = {
             {
               id: args.chatId,
             },
-            {relations: ['messages']},
+            {relations: ['messages', 'passenger']},
           );
           if (chat) {
             if (chat.passengerId === user.id || chat.driverId === user.id) {
